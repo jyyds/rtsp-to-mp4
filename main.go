@@ -102,8 +102,10 @@ func startAllCamera() {
 	for i, c := range config.Cameras {
 		t := time.Now()
 		filename := fmt.Sprintf("%s/data/%s_%d.mp4", cwd, c.Name, t.Unix())
-		config.Cameras[i].CMD = exec.Command("ffmpeg", "-i", c.Server, "-acodec", "aac", "-vcodec", "copy", "-f", "mp4", "-y", filename)
+		// config.Cameras[i].CMD = exec.Command("ffmpeg", "-i", c.Server, "-acodec", "aac", "-vcodec", "copy", "-f", "mp4", "-y", filename)
 		// config.Cameras[i].CMD = exec.Command("ffmpeg", "-i", c.Server, "-c", "copy", "-map", "0", "-segment_time", "300", "-f", "segment", "video/output0.mp4")
+		config.Cameras[i].CMD = exec.Command("ffmpeg", "-i", c.Server, "-vcodec", "copy", "-t", "500", "-f", "mp4", filename)
+
 		config.Cameras[i].CMD.Dir = cwd
 		if err := c.Start(); err != nil {
 			log.Println("camera: " + err.Error())
