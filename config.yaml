@@ -1,0 +1,7 @@
+retention_file: 48 
+max_video_length: 6h
+cameras:
+  - name: camera-01
+    server: rtmp://rtmp01open.ys7.com/openlive/983a786972894c88b32e7ebe6f883888.hd
+  # - name: camera-02
+  #   server:rtmp://rtmp01open.ys7.com/openlive/983a786972894c88b32e7ebe6f883888.hd
